@@ -15,3 +15,5 @@ CMakeFiles
 CMakeCache.txt
 latest?
 venv
+.idea
+.vscode
