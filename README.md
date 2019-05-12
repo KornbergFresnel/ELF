@@ -25,6 +25,14 @@ Tutorials
 =============
 See [here](http://yuandong-tian.com/elf-tutorial/tutorial.html).
 
+**NOTE**: If your system is macOS Mojave, you may fail to compile the rts engine because of missing headers in `/usr/include`. You can run
+
+```bash
+open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg
+```
+
+from the commandline to fix this issue. While the [official release](https://developer.apple.com/documentation/xcode_release_notes/xcode_10_release_notes) notes this package will no longer be provided in future release, so I gonna to update this project to keep compatibility.
+
 Install scripts
 ================
 You need to have ```cmake``` >= 3.8, ```gcc``` >= 4.9 and ```tbb``` (linux ```libtbb-dev```) in order to install this script successfully.
