@@ -22,6 +22,7 @@ class PPO:
                 ("min_prob", dict(type=float, help="Minimal probability used in training", default=1e-6)),
                 ("policy_action_nodes", dict(type=str, help=";separated string that specify policy_action nodes.",
                                              default="pi,a")),
+                ("method_name", dict(type=str, help="KL_pen or nn.", default="nn")),
                 ("grad_steps", dict(type=int, help="Define grad steps for policy update.", default=5))
             ],
             more_args=["num_games", "batchsize", "value_node"],
@@ -163,7 +164,7 @@ class PPO:
                 dict(r=batch["r"][t], terminal=batch["terminal"][t]),
                 stats=stats)
 
-            policy_err = self._feed(R - V.data, state_curr, bht, stats, old_logits_s=bht)
+            policy_err = self._feed(R - V.data, state_curr, bht, stats, old_pi_s=bht)
             err = add_err(err, policy_err)
             err = add_err(err, self.value_matcher.feed({value_node: V, "target": R}, stats))
 
