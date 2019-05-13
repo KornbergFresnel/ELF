@@ -9,7 +9,7 @@ import torch.nn as nn
 from copy import deepcopy
 from collections import Counter
 
-from rlpytorch import Model, ActorCritic
+from rlpytorch import Model, ActorCritic, PPO, Q_learning
 from actor_critic_changed import ActorCriticChanged
 from forward_predict import ForwardPredict
 from trunk import MiniRTSNet
@@ -95,10 +95,29 @@ class Model_ActorCritic(Model):
         self.Wt2.reset_parameters()
         self.Wt3.reset_parameters()
 
+
+class Model_Q(Model):
+    def __init__(self, args):
+        super(Model_Q, self).__init__(args)
+
+
+class Model_MAQ(Model_Q):
+    def __init__(self, args):
+        super(Model_MAQ, self).__init__(args)
+
+
+class Model_MAAC(Model_ActorCritic):
+    def __init__(self, args):
+        super(Model_MAAC, self).__init__(args)
+
+
 # Format: key, [model, method]
 # if method is None, fall back to default mapping from key to method
 Models = {
-    "actor_critic": [Model_ActorCritic, ActorCritic],
+    "actor_critic": [Model_ActorCritic, ActorCritic],  # model_class, method_class
     "actor_critic_changed": [Model_ActorCritic, ActorCriticChanged],
-    "forward_predict": [Model_ActorCritic, ForwardPredict]
+    "forward_predict": [Model_ActorCritic, ForwardPredict],
+    "ppo": [Model_ActorCritic, PPO],
+    "q_learning": [Model_Q, Q_learning],
+    # "maddpg": [Model_MAAC, MADDPG]
 }
