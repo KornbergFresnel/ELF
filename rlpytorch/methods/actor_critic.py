@@ -15,6 +15,7 @@ from .discounted_reward import DiscountedReward
 from .value_matcher import ValueMatcher
 from .utils import add_err
 
+
 # Actor critic model.
 class ActorCritic:
     ''' An actor critic model '''

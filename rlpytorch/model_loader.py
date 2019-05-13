@@ -12,11 +12,13 @@ from .sampler import Sampler
 from .model_interface import ModelInterface
 # from .utils.utils import get_total_size
 
+
 def load_module(mod):
     ''' Load a python module'''
     sys.path.insert(0, os.path.dirname(mod))
     module = __import__(os.path.basename(mod))
     return module
+
 
 class ModelLoader:
     ''' Class to load a previously saved model'''
@@ -96,8 +98,9 @@ class ModelLoader:
 
         return model
 
+
 def load_env(envs, num_models=None, overrides=dict(), defaults=dict(), **kwargs):
-    ''' Load envs. envs will be specified as environment variables, more specifically, ``game``, ``model_file`` and ``model`` are required.
+    """ Load envs. envs will be specified as environment variables, more specifically, ``game``, ``model_file`` and ``model`` are required.
 
     Returns:
         env: dict of
@@ -105,7 +108,7 @@ def load_env(envs, num_models=None, overrides=dict(), defaults=dict(), **kwargs)
             ``method``: Learning method used
             ``model_loaders``: loaders for model
         all_args: loaded arguments from `ArgsPrivider`
-    '''
+    """
     game = load_module(envs["game"]).Loader()
     model_file = load_module(envs["model_file"])
     # TODO This is not good, need to fix.

@@ -31,7 +31,7 @@ class SingleProcessRun:
         Args:
             GC(`GameContext`): Game Context
             episode_start(func): operations to perform before each episode
-            episode_summary(func): operations to summarize after each epidsode
+            episode_summary(func): operations to summarize after each episode
         '''
         self.GC = GC
         self.episode_summary = episode_summary

@@ -103,7 +103,7 @@ class PolicyGradient:
             return grad
         v.register_hook(bw_hook)
 
-    def feed(self, Q, pi_s, actions,  stats, old_pi_s=dict()):
+    def feed(self, Q, pi_s, actions, stats, old_pi_s=dict()):
         '''
         One iteration of policy gradient.
 
