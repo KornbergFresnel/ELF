@@ -1,5 +1,13 @@
 # ELF: An Extensive, Lightweight and Flexible Platform for Game Research
 
+**New Features**
+
+1. more reinforcement learning support for Minirts games.
+
+- [x] Proximal Policy Optimization Algorithms
+- [ ] Multiagent Soft Q-learning
+- [ ] Multiagent Deep Determinstic Policy Gradient
+
 Overview
 ===============
 
